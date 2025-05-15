@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Orange Head Clan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#121212',
+                            800: '#1E1E1E',
+                            700: '#2A2A2A',
+                            600: '#363636',
+                        },
+                        orange: {
+                            500: '#FF7D33',
+                            600: '#E66C22',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+        
+        .squircle {
+            border-radius: 12px;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #FF7D33;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: white;
+        }
+        
+        .leader-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: #1E1E1E;
+                padding: 20px;
+                z-index: 1000;
+                border-bottom: 2px solid #FF7D33;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-dark-800 py-4 px-0 shadow-lg sticky top-0 z-50">
+        <div class="w-full flex items-center justify-between px-3">
+    
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                    <img src="images/logo.png" alt="Icon" class="w-6 h-6 object-contain" />
+                </div>
+                <span class="text-white font-bold text-xl md:text-2xl">The Orange Head Clan</span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-8">
+                <a href="index.html" class="text-white nav-link active">Home</a>
+                <a href="#" class="text-gray-300 hover:text-white nav-link">Page 1</a>
+                <a href="#" class="text-gray-300 hover:text-white nav-link">Page 2</a>
+                <a href="#" class="text-gray-300 hover:text-white nav-link">Page 3</a>
+            </div>
+            
+            <!-- Login Button -->
+            <div class="hidden md:block">
+                <a href="join-us/index.html">
+                  <button class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 squircle transition duration-300">
+                    Join Us
+                  </button>
+                </a>
+              </div>
+    
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-3 pt-2 pb-4 space-y-2">
+        <a href="#" class="block text-white py-2 border-b border-dark-600">Home</a>
+        <a href="join-us/index.html" class="block text-gray-300 hover:text-white py-2 border-b border-dark-600">Page 1</a>
+        <a href="#" class="block text-gray-300 hover:text-white py-2 border-b border-dark-600">Page 2</a>
+        <a href="#" class="block text-gray-300 hover:text-white py-2 border-b border-dark-600">Page 3</a>
+        <a href="join-us/index.html">
+            <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 squircle mt-2 w-full transition duration-300">
+                Join Us
+            </button>
+        </a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Who We Are Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-orange-500 relative inline-block">
+                Who We Are
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-orange-500"></span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2">
+                    <p class="text-gray-300 mb-4">
+                        We are The Orange Head Clan, the most serious unserious group there is. Originally founded in 2017 by Kraevous (Sir Orange Head) on Minecraft Xbox 360 Edition and Clash of Clans, it was revived in 2021 by both Kraevous and XxJVG1xX (OrangeGaming4K) to now have clans on many games, including Roblox, Minecraft, Clash of Clans, GTA and Call of Duty being our mainstream so far.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        
+                        Our aim is to be one of the most powerful civilisations in the gaming world while also being the one place where people can have a laugh and not feel any sort of need to be formal. We got goals and ambition but also a laid back nature. If you want a pressure free environment but also want to further your skills within gaming, join us and become apart of the family, it's only ever growing.
+                    </p>
+                    <p class="text-gray-300">
+                        Most importantly, make sure to join the communications server to connect with all of the other games and meeting new people within our family. See you there!
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-dark-700 rounded-xl overflow-hidden aspect-video flex items-center justify-center">
+                        <i class="fas fa-image text-5xl text-gray-500"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Meet Our Leaders Section -->
+        <section>
+            <h2 class="text-3xl font-bold mb-8 text-orange-500 relative inline-block">
+                Meet Our Leaders
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-orange-500"></span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Leader 1 -->
+                <div class="bg-dark-700 rounded-xl p-6 leader-card">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-24 h-24 rounded-full bg-dark-600 mb-4 flex items-center justify-center overflow-hidden">
+                            <i class="fas fa-user text-4xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">OrangeGaming4K</h3>
+                        <p class="text-orange-500 font-medium mb-3">Orange Master</p>
+                        <p class="text-gray-300">
+                            Yap yap very cool guy yap yap yap
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Leader 2 -->
+                <div class="bg-dark-700 rounded-xl p-6 leader-card">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-24 h-24 rounded-full bg-dark-600 mb-4 flex items-center justify-center overflow-hidden">
+                            <i class="fas fa-user text-4xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Sir Orange Head</h3>
+                        <p class="text-orange-500 font-medium mb-3">Orange Master</p>
+                        <p class="text-gray-300">
+                            Yap yap a nerd yap yap
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+      
+        mobileMenuButton.addEventListener('click', (e) => {
+          e.stopPropagation();  // prevent immediate close when clicking button
+          mobileMenu.classList.toggle('hidden');
+        });
+      
+        document.addEventListener('click', (e) => {
+          if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      </script>    
+</body>
+</html>
